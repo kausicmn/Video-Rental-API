@@ -4,17 +4,22 @@ const admin=require('../middleware/admin')
 const router=express.Router()
 const {Genre,validate}=require('../models/genres')
 // get
+ function asyncMiddleware(handler){
+        return async (req,res,next)=>{
+            try {
+                await handler(req,res);
+            }
+            catch(ex){
+                next(ex)
+            }
 
-router.get('/',async (req,res,next)=>{
-    try{
+    }
+}
+router.get('/',asyncMiddleware(async (req,res,next)=>{
         const genres=await Genre.find().sort('name')
         res.send(genres);
     }
-    catch(ex){
-next(ex);
-    }
-
-})
+))
 
 router.get('/:id',async (req,res)=>{
     const genre=await Genre.findById(req.params.id)
