@@ -1,3 +1,4 @@
 {
-    "jwtprivatekey":"video_jwtprivate"
+    "jwtprivatekey":"video_jwtprivate",
+    "db":"video_api_db"
 }

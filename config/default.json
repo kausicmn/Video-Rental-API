@@ -1,4 +1,4 @@
 {
     "jwtprivatekey":"",
-    "db":"mongodb://localhost/video-rental-api"
+    "db":""
 }
